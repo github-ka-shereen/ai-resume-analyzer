@@ -1,0 +1,36 @@
+import { Link } from 'react-router';
+import ScoreCircle from './ScoreCircle';
+
+function ResumeCard({ resume }: { resume: Resume }) {
+  return (
+    <Link
+      className='resume-card animate-in fade-in duration-1000'
+      to={`/resume/${resume.id}`}
+    >
+      <div className='resume-card-header'>
+        <div className='flex flex-col gap-2'>
+          <h2 className='!text-black font-bold break-words'>
+            {resume.companyName}
+          </h2>
+          <h3 className='text-lg break-words text-grey-500'>
+            {resume.jobTitle}
+          </h3>
+        </div>
+        <div className='flex-shrink-0'>
+          <ScoreCircle score={resume.feedback.overallScore} />
+        </div>
+      </div>
+      <div className='gradient-border animate-in fade-in duration-1000'>
+        <div className='w-full h-full'>
+          <img
+            className='w-full h-[350px] max-sm:h-[200px] object-cover object-top'
+            src={resume.imagePath}
+            alt='resume'
+          />
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default ResumeCard;
